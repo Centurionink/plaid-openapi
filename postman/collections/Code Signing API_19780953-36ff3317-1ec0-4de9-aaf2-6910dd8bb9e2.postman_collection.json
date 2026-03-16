@@ -1,0 +1,163 @@
+{
+  "info": {
+    "_postman_id": "36ff3317-1ec0-4de9-aaf2-6910dd8bb9e2",
+    "name": "Code Signing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Upload Code",
+      "id": "63e3f702-6b40-45cd-8999-0732eaab8cf8",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true,
+        "disabledSystemHeaders": {
+          "content-type": true
+        }
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJraWQiOiJxT1VlWkNDelNxZ0E5M2FjQjNMWXE2bEJOamdaZGlPeFFjLUtheUMzVU13IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJTU0wuY29tIEF1dGhlbnRpY2F0aW9uIFNlcnZpY2UiLCJleHAiOjE2MjI2NjgzMTMsImlhdCI6MTYyMjY2NDcxMywianRpIjoiMGU2YTU2NTgtMmI2NS00NTAzLWJkMzQtZWQ3Y2FlOTgwYTk2Iiwic3ViIjoiYmlsYWwuYXNocmFmIiwidXNlciI6eyJ1c2VyX2lkIjoxMzIyNzE3LCJ1c2VyX2VtYWlsIjoiYmlsYWxAc3NsLmNvbSIsInVzZXJuYW1lIjoiYmlsYWwuYXNocmFmIiwic3NsX2FjY291bnRfaWQiOjQ3NDE1MH0sImNsaWVudCI6eyJpZCI6InFPVWVaQ0N6U3FnQTkzYWNCM0xZcTZsQk5qZ1pkaU94UWMtS2F5QzNVTXcifX0.VPquxqDmLVgARtKidfjRAgAN-gpCeDqlkGHn12-tjZyquSzrVNq6LDFTQAtY6ZwKykqO4ZXRqP2W0egVhqPsnB3UAq7TjCMLop6i9YDWAnZSj02YDRxpcANqETeAm72U_-gNjO2o788jvMwno0augdbHyEiQil3lSJ9IT9sKVGJDbqisGFMW67bY6Rsq6NbNsZUX8BNymkPRmNOYK02gDcB_aNfxdg3uRKbf5o5g9wIgMwZBes-L4OCov7RrSVU49vm2CHl0diqxbIOePPF_WlqoC1N_u9766xTNWFmSNq0YtrQv5fVpZI9et53QZptQPC-aNhCyklfTxLgzrfi9bg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Credential-Id",
+            "type": "text",
+            "value": "01293b7e-6c0d-4edc-9c18-55eca678469a"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/exe",
+            "type": "text"
+          },
+          {
+            "key": "Program-Name",
+            "value": "eSigner LLC",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "file",
+          "file": {
+            "src": "/C:/Data/temp/wineyes.exe"
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/code/upload",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "code",
+            "upload"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Sign Code",
+      "id": "2b0580ed-1cb0-4d8c-adc4-1e543e916d78",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true,
+        "disabledSystemHeaders": {
+          "content-type": true
+        }
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJraWQiOiJxT1VlWkNDelNxZ0E5M2FjQjNMWXE2bEJOamdaZGlPeFFjLUtheUMzVU13IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJTU0wuY29tIEF1dGhlbnRpY2F0aW9uIFNlcnZpY2UiLCJleHAiOjE2MjI2NjgzMTMsImlhdCI6MTYyMjY2NDcxMywianRpIjoiMGU2YTU2NTgtMmI2NS00NTAzLWJkMzQtZWQ3Y2FlOTgwYTk2Iiwic3ViIjoiYmlsYWwuYXNocmFmIiwidXNlciI6eyJ1c2VyX2lkIjoxMzIyNzE3LCJ1c2VyX2VtYWlsIjoiYmlsYWxAc3NsLmNvbSIsInVzZXJuYW1lIjoiYmlsYWwuYXNocmFmIiwic3NsX2FjY291bnRfaWQiOjQ3NDE1MH0sImNsaWVudCI6eyJpZCI6InFPVWVaQ0N6U3FnQTkzYWNCM0xZcTZsQk5qZ1pkaU94UWMtS2F5QzNVTXcifX0.VPquxqDmLVgARtKidfjRAgAN-gpCeDqlkGHn12-tjZyquSzrVNq6LDFTQAtY6ZwKykqO4ZXRqP2W0egVhqPsnB3UAq7TjCMLop6i9YDWAnZSj02YDRxpcANqETeAm72U_-gNjO2o788jvMwno0augdbHyEiQil3lSJ9IT9sKVGJDbqisGFMW67bY6Rsq6NbNsZUX8BNymkPRmNOYK02gDcB_aNfxdg3uRKbf5o5g9wIgMwZBes-L4OCov7RrSVU49vm2CHl0diqxbIOePPF_WlqoC1N_u9766xTNWFmSNq0YtrQv5fVpZI9et53QZptQPC-aNhCyklfTxLgzrfi9bg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Transfer-Encoding",
+            "type": "text",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": \"ee12a335-43ba-484b-99e8-2d13fccf8cb9\",\r\n    \"otp\":\"640333\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/code/sign",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "code",
+            "sign"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "id": "bc504e84-eb51-4385-9874-74e520e2c4f5",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "apikey"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "60baf77a-7633-483d-ba03-24e4541e984b",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "0403dfc2-cede-409a-b04a-4371957c6eff",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}

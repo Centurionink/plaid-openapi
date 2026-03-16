@@ -1,0 +1,2573 @@
+{
+  "info": {
+    "_postman_id": "821f02b1-8820-4505-97f7-c5112c4bc539",
+    "name": "Webhook.site API",
+    "description": "Collection for Webhook.site API endpoints including requests, tokens, and URL management.\n\nIn this folder, you can customize the API Key under the Variables tab – or turn off authorization entirely under the Authorization tab.\n\nView the complete documentation here: [https://docs.webhook.site/api/about.html](https://docs.webhook.site/api/about.html)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Tokens (URLs)",
+      "item": [
+        {
+          "name": "Create Token/URL",
+          "id": "48ba03ac-39a4-4f58-9e73-19a29d6240af",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"default_status\": 200,\n  \"default_content\": \"OK\",\n  \"default_content_type\": \"text/plain\",\n  \"timeout\": 0,\n  \"expiry\": null\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/token",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token"
+              ]
+            },
+            "description": "Create a new Webhook.site URL with optional configuration"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Token Details",
+          "id": "dfe9fef1-0199-47cb-9529-098bb3e2230b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/token/{{token_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token",
+                "{{token_id}}"
+              ]
+            },
+            "description": "Get details of a specific token"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Token",
+          "id": "1f96ef27-822e-473a-92cd-e9617e61d5ef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"default_status\": 201,\n  \"default_content\": \"Updated response\",\n  \"default_content_type\": \"application/json\",\n  \"timeout\": 0,\n  \"cors\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/token/{{token_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token",
+                "{{token_id}}"
+              ]
+            },
+            "description": "Update token configuration"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Token",
+          "id": "957d2358-2e4a-4aa1-85ca-4f90e9e38f92",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/token/{{token_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token",
+                "{{token_id}}"
+              ]
+            },
+            "description": "Delete a token and all its associated requests"
+          },
+          "response": []
+        }
+      ],
+      "id": "320eba5e-97b9-49ab-8c28-3f610936af9f",
+      "description": "Endpoints for managing Webhook.site Tokens/URLs.\n\nIn Webhook.site parlance, \"tokens\" act as the inbox or container for Requests, Emails and DNSHooks and correspond to a Webhook.site URL or E-mail Address."
+    },
+    {
+      "name": "Testing Endpoints",
+      "item": [
+        {
+          "name": "Test Webhook (GET)",
+          "id": "dee28bf3-43a3-400e-8a1b-06ccab7d81e5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "User-Agent",
+                "value": "Postman Test"
+              },
+              {
+                "key": "X-Test-Header",
+                "value": "test-value"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/{{token_id}}?param1=value1&param2=value2",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "{{token_id}}"
+              ],
+              "query": [
+                {
+                  "key": "param1",
+                  "value": "value1"
+                },
+                {
+                  "key": "param2",
+                  "value": "value2"
+                }
+              ]
+            },
+            "description": "Send a test GET request to your webhook URL"
+          },
+          "response": []
+        },
+        {
+          "name": "Test Webhook (GET, with sub-path)",
+          "id": "439a0b57-66a9-4635-951e-1ffbb70e2169",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "User-Agent",
+                "value": "Postman Test"
+              },
+              {
+                "key": "X-Test-Header",
+                "value": "test-value"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/{{token_id}}/api/v1/test?param1=value1&param2=value2",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "{{token_id}}",
+                "api",
+                "v1",
+                "test"
+              ],
+              "query": [
+                {
+                  "key": "param1",
+                  "value": "value1"
+                },
+                {
+                  "key": "param2",
+                  "value": "value2"
+                }
+              ]
+            },
+            "description": "Send a test GET request to your webhook URL"
+          },
+          "response": []
+        },
+        {
+          "name": "Test Webhook (POST)",
+          "id": "0f4c1535-252c-4bf1-834a-b322955f20b5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Webhook-Source",
+                "value": "postman-test"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"test_event\",\n  \"timestamp\": \"{{$timestamp}}\",\n  \"data\": {\n    \"user_id\": 12345,\n    \"action\": \"user_signup\",\n    \"email\": \"test@example.com\"\n  },\n  \"metadata\": {\n    \"source\": \"postman\",\n    \"version\": \"1.0\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/{{token_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "{{token_id}}"
+              ]
+            },
+            "description": "Send a test POST request with JSON payload to your webhook URL"
+          },
+          "response": []
+        },
+        {
+          "name": "Test Webhook (Form Data)",
+          "id": "2f7f6c4a-4e28-4b5e-b842-a5fceb363267",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "testuser",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "test@example.com",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "value": null
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/{{token_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "{{token_id}}"
+              ]
+            },
+            "description": "Send a test POST request with form data to your webhook URL"
+          },
+          "response": []
+        },
+        {
+          "name": "Test Webhook (XML)",
+          "id": "31350b92-8447-4b9c-87fb-42463a318198",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<webhook>\n  <event>test_event</event>\n  <timestamp>{{$timestamp}}</timestamp>\n  <data>\n    <user_id>12345</user_id>\n    <action>user_signup</action>\n    <email>test@example.com</email>\n  </data>\n</webhook>"
+            },
+            "url": {
+              "raw": "{{base_url}}/{{token_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "{{token_id}}"
+              ]
+            },
+            "description": "Send a test POST request with XML payload to your webhook URL"
+          },
+          "response": []
+        },
+        {
+          "name": "Test Custom Status Code",
+          "id": "9a007c68-abe3-4a1e-bdd9-00058b6dcc2a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Testing custom status code response\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/{{token_id}}/201",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "{{token_id}}",
+                "201"
+              ]
+            },
+            "description": "Test webhook with custom status code (201 Created)"
+          },
+          "response": []
+        }
+      ],
+      "id": "b7d762ea-6082-4a9e-909e-ed2808badbcf",
+      "description": "Test requests to send to your webhook URLs\n\nTo start, [create a Token](https://www.postman.com/webhook-site/webhook-site-api/request/myjbpva/create-token?action=share&source=copy-link&creator=45321203&ctx=documentation) first.",
+      "auth": {
+        "type": "noauth"
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "ac9f8580-7d5e-4c63-a340-dd16a1e8d075",
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              "if (! pm.collectionVariables.get('token_id')) {",
+              "    throw new Error('No token ID/URL present! You must first create one by running the \"Create Token\" request, or set \"token_id\" manually in the Variables section.');",
+              "}"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "e0c81d40-2646-450e-8eac-e514a057e154",
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Requests",
+      "item": [
+        {
+          "name": "Get All Requests",
+          "id": "a46033ad-fb90-48d8-b510-840d83bdc851",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/token/{{token_id}}/requests",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token",
+                "{{token_id}}",
+                "requests"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "sorting",
+                  "value": "newest",
+                  "disabled": true
+                },
+                {
+                  "key": "per_page",
+                  "value": "50",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Get all requests for a Webhook.site URL with optional pagination and sorting"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single Request",
+          "id": "0d25248d-03e9-48f3-9064-18e9cbd95be2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/token/{{token_id}}/request/{{request_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token",
+                "{{token_id}}",
+                "request",
+                "{{request_id}}"
+              ]
+            },
+            "description": "Get details of a specific request"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Single Request",
+          "id": "d82d06ea-1d4e-41df-b899-c74804908a7f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/token/{{token_id}}/request/{{request_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token",
+                "{{token_id}}",
+                "request",
+                "{{request_id}}"
+              ]
+            },
+            "description": "Delete a specific request"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete All Requests",
+          "id": "9ba56589-fc9d-4168-b082-96de98d09df8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/token/{{token_id}}/requests",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token",
+                "{{token_id}}",
+                "requests"
+              ]
+            },
+            "description": "Delete all requests for a token"
+          },
+          "response": []
+        }
+      ],
+      "id": "f41e57d3-781b-473d-9023-90afc0a30823",
+      "description": "Endpoints for managing Webhook.site requests, allowing you to interact with and see what data was sent to a Webhook.site URL.",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "048d42af-42e3-4ecc-946b-954a4a75f5da",
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              "if (! pm.collectionVariables.get('token_id')) {",
+              "    throw new Error('No token ID/URL present! You must first create one by running the \"Create Token\" request, or set \"token_id\" manually in the Variables section.');",
+              "}"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "add52371-09c5-4185-91e4-2ece3be66ece",
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Custom Actions",
+      "item": [
+        {
+          "name": "Create Custom Action",
+          "id": "dc274166-7b38-4a5b-aefa-c6c761cd0911",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Send Email\",\n  \"type\": \"send_email\",\n  \"order\": 0,\n  \"parameters\": {\n    \"recipient\": \"user@example.com\",\n    \"subject\": \"Webhook Received\",\n    \"content\": \"A webhook was received at {{date}}\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/token/{{token_id}}/actions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token",
+                "{{token_id}}",
+                "actions"
+              ]
+            },
+            "description": "Create a Custom Action for a token"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Custom Actions",
+          "id": "a749813c-8942-4191-91dc-e8397abb069b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/token/{{token_id}}/actions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token",
+                "{{token_id}}",
+                "actions"
+              ]
+            },
+            "description": "Get all Custom Actions for a token"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Custom Action",
+          "id": "0fcfc950-9f88-4913-9a10-e4b649753dc6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Send Email\",\n  \"type\": \"send_email\",\n  \"order\": 0,\n  \"parameters\": {\n    \"recipient\": \"user@example.com\",\n    \"subject\": \"Webhook Received\",\n    \"content\": \"A webhook was received at {{date}}\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/token/{{token_id}}/actions/{{action_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token",
+                "{{token_id}}",
+                "actions",
+                "{{action_id}}"
+              ]
+            },
+            "description": "Update a custom action"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Custom Action",
+          "id": "2cd53873-bdd7-4ce6-bb49-67def432cc39",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/token/{{token_id}}/actions/{{action_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "token",
+                "{{token_id}}",
+                "actions",
+                "{{action_id}}"
+              ]
+            },
+            "description": "Delete a custom action"
+          },
+          "response": []
+        }
+      ],
+      "id": "b896a5dd-2a2a-424f-a600-0aacea8061b2",
+      "description": "Endpoints for managing custom actions and automations"
+    },
+    {
+      "name": "Templates",
+      "item": [
+        {
+          "name": "Create Template",
+          "id": "4f2b3a4d-45ea-47bf-ba41-709e7da8ccdc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My Template\",\n  \"actions\": [\n    {\n      \"name\": null,\n      \"type\": \"conditions\",\n      \"queue\": false,\n      \"delay\": 0,\n      \"condition\": null,\n      \"parameters\": {\n        \"conditions\": [\n          {\n            \"input\": \"$date$\",\n            \"operator\": \"eq\",\n            \"value\": \"$post-news-last-date$\"\n          }\n        ],\n        \"mode\": \"all\",\n        \"action\": \"stop\"\n      },\n      \"order\": 2\n    },\n    {\n      \"name\": null,\n      \"type\": \"twitter_tweet\",\n      \"queue\": false,\n      \"delay\": 0,\n      \"condition\": null,\n      \"parameters\": {\n        \"provider_id\": \"501133\",\n        \"tweet\": \"$tweet$\"\n      },\n      \"order\": 3\n    },\n    {\n      \"name\": null,\n      \"type\": \"store_global_variable\",\n      \"queue\": false,\n      \"delay\": 0,\n      \"condition\": null,\n      \"parameters\": {\n        \"name\": \"post-news-last-date\",\n        \"value\": \"$date$\"\n      },\n      \"order\": 4\n    }\n  ],\n  \"variables\": [\n    {\n      \"name\": \"example\",\n      \"value\": \"hello world\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/templates",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "templates"
+              ]
+            },
+            "description": "Create a new template containing Custom Actions. Templates can be reused across different workflows using the Include Template action.\n\n**Parameters:**\n- `name`: The name of the template\n- `actions`: Array of Custom Action objects (all parameters except `disabled` can be used)\n- `variables`: Array of name-value objects for predefined variables available to subsequent actions\n\nRequires authentication."
+          },
+          "response": [
+            {
+              "id": "0a175472-0d03-4d0f-8e37-469990080f93",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Template\",\n  \"actions\": [\n    {\n      \"name\": null,\n      \"type\": \"conditions\",\n      \"queue\": false,\n      \"delay\": 0,\n      \"condition\": null,\n      \"parameters\": {\n        \"conditions\": [\n          {\n            \"input\": \"$date$\",\n            \"operator\": \"eq\",\n            \"value\": \"$post-news-last-date$\"\n          }\n        ],\n        \"mode\": \"all\",\n        \"action\": \"stop\"\n      },\n      \"order\": 2\n    },\n    {\n      \"name\": null,\n      \"type\": \"twitter_tweet\",\n      \"queue\": false,\n      \"delay\": 0,\n      \"condition\": null,\n      \"parameters\": {\n        \"provider_id\": \"501133\",\n        \"tweet\": \"$tweet$\"\n      },\n      \"order\": 3\n    },\n    {\n      \"name\": null,\n      \"type\": \"store_global_variable\",\n      \"queue\": false,\n      \"delay\": 0,\n      \"condition\": null,\n      \"parameters\": {\n        \"name\": \"post-news-last-date\",\n        \"value\": \"$date$\"\n      },\n      \"order\": 4\n    }\n  ],\n  \"variables\": [\n    {\n      \"name\": \"example\",\n      \"value\": \"hello world\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/templates",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "templates"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"name\": \"My Template\",\n  \"variables\": [\n    {\n      \"name\": \"example\",\n      \"value\": \"hello world\"\n    }\n  ],\n  \"team_id\": 1,\n  \"updated_at\": \"2024-02-20T10:01:29.000000Z\",\n  \"created_at\": \"2024-02-20T10:01:29.000000Z\",\n  \"id\": 21,\n  \"actions\": [\n    {\n      \"condition\": null,\n      \"delay\": 0,\n      \"parameters\": {\n        \"mode\": \"all\",\n        \"conditions\": [\n          {\n            \"input\": \"$date$\",\n            \"operator\": \"eq\",\n            \"value\": \"$post-news-last-date$\"\n          }\n        ],\n        \"action\": \"stop\"\n      },\n      \"token_id\": \"f1bd342e-c98b-4ac4-bf3f-c35f1f338161\",\n      \"type\": \"conditions\",\n      \"order\": 2,\n      \"name\": null,\n      \"template_id\": 21,\n      \"uuid\": \"9b615454-3c64-4da2-a2f7-d524797a8925\",\n      \"updated_at\": \"2024-02-20T10:01:29.000000Z\",\n      \"created_at\": \"2024-02-20T10:01:29.000000Z\"\n    },\n    {\n      \"condition\": null,\n      \"delay\": 0,\n      \"parameters\": {\n        \"tweet\": \"$tweet$\",\n        \"provider_id\": \"501133\"\n      },\n      \"token_id\": \"f1bd342e-c98b-4ac4-bf3f-c35f1f338161\",\n      \"type\": \"twitter_tweet\",\n      \"order\": 3,\n      \"name\": null,\n      \"template_id\": 21,\n      \"uuid\": \"9b615454-3ce7-4c63-bc8b-3412694ae633\",\n      \"updated_at\": \"2024-02-20T10:01:29.000000Z\",\n      \"created_at\": \"2024-02-20T10:01:29.000000Z\"\n    },\n    {\n      \"condition\": null,\n      \"delay\": 0,\n      \"parameters\": {\n        \"name\": \"post-news-last-date\",\n        \"value\": \"$date$\"\n      },\n      \"token_id\": \"f1bd342e-c98b-4ac4-bf3f-c35f1f338161\",\n      \"type\": \"store_global_variable\",\n      \"order\": 4,\n      \"name\": null,\n      \"template_id\": 21,\n      \"uuid\": \"9b615454-3d5f-4cd6-bd4b-94b55e6f6f2f\",\n      \"updated_at\": \"2024-02-20T10:01:29.000000Z\",\n      \"created_at\": \"2024-02-20T10:01:29.000000Z\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Template (Simple)",
+          "id": "dcadfb74-ccc2-499b-a2bc-238c423b1193",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Simple Template\",\n  \"actions\": [\n    {\n      \"name\": \"Log Message\",\n      \"type\": \"log\",\n      \"queue\": false,\n      \"delay\": 0,\n      \"condition\": null,\n      \"parameters\": {\n        \"message\": \"Template executed successfully\"\n      },\n      \"order\": 1\n    }\n  ],\n  \"variables\": []\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/templates",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "templates"
+              ]
+            },
+            "description": "Example of creating a simple template with a single action and no predefined variables."
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Templates",
+          "id": "c4ed5264-b4b4-4d36-8458-bc4aed488dfa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/templates?page=1&per_page=15",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "templates"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number to retrieve"
+                },
+                {
+                  "key": "per_page",
+                  "value": "15",
+                  "description": "Number of templates per page"
+                }
+              ]
+            },
+            "description": "Retrieve a paginated list of all templates with their actions and variables. Requires authentication."
+          },
+          "response": [
+            {
+              "id": "fc89ec4a-c788-42ff-a115-02b9c2158642",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/templates?page=1&per_page=15",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "templates"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "15"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"name\": \"My Template\",\n      \"variables\": [\n        {\n          \"name\": \"example\",\n          \"value\": \"hello world\"\n        }\n      ],\n      \"team_id\": 1,\n      \"updated_at\": \"2024-02-20T10:01:29.000000Z\",\n      \"created_at\": \"2024-02-20T10:01:29.000000Z\",\n      \"id\": 21,\n      \"actions\": [\n        {\n          \"condition\": null,\n          \"delay\": 0,\n          \"parameters\": {\n            \"mode\": \"all\",\n            \"conditions\": [\n              {\n                \"input\": \"$date$\",\n                \"operator\": \"eq\",\n                \"value\": \"$post-news-last-date$\"\n              }\n            ],\n            \"action\": \"stop\"\n          },\n          \"token_id\": \"f1bd342e-c98b-4ac4-bf3f-c35f1f338161\",\n          \"type\": \"conditions\",\n          \"order\": 2,\n          \"name\": null,\n          \"template_id\": 21,\n          \"uuid\": \"9b615454-3c64-4da2-a2f7-d524797a8925\",\n          \"updated_at\": \"2024-02-20T10:01:29.000000Z\",\n          \"created_at\": \"2024-02-20T10:01:29.000000Z\"\n        },\n        {\n          \"condition\": null,\n          \"delay\": 0,\n          \"parameters\": {\n            \"tweet\": \"$tweet$\",\n            \"provider_id\": \"501133\"\n          },\n          \"token_id\": \"f1bd342e-c98b-4ac4-bf3f-c35f1f338161\",\n          \"type\": \"twitter_tweet\",\n          \"order\": 3,\n          \"name\": null,\n          \"template_id\": 21,\n          \"uuid\": \"9b615454-3ce7-4c63-bc8b-3412694ae633\",\n          \"updated_at\": \"2024-02-20T10:01:29.000000Z\",\n          \"created_at\": \"2024-02-20T10:01:29.000000Z\"\n        },\n        {\n          \"condition\": null,\n          \"delay\": 0,\n          \"parameters\": {\n            \"name\": \"post-news-last-date\",\n            \"value\": \"$date$\"\n          },\n          \"token_id\": \"f1bd342e-c98b-4ac4-bf3f-c35f1f338161\",\n          \"type\": \"store_global_variable\",\n          \"order\": 4,\n          \"name\": null,\n          \"template_id\": 21,\n          \"uuid\": \"9b615454-3d5f-4cd6-bd4b-94b55e6f6f2f\",\n          \"updated_at\": \"2024-02-20T10:01:29.000000Z\",\n          \"created_at\": \"2024-02-20T10:01:29.000000Z\"\n        }\n      ]\n    }\n  ],\n  \"first_page_url\": \"https://webhook.site/templates?page=1\",\n  \"from\": 1,\n  \"last_page\": 1,\n  \"last_page_url\": \"https://webhook.site/templates?page=1\",\n  \"links\": [\n    {\n      \"url\": null,\n      \"label\": \"« Previous\",\n      \"active\": false\n    },\n    {\n      \"url\": \"https://webhook.site/templates?page=1\",\n      \"label\": \"1\",\n      \"active\": true\n    },\n    {\n      \"url\": null,\n      \"label\": \"Next »\",\n      \"active\": false\n    }\n  ],\n  \"next_page_url\": null,\n  \"path\": \"https://webhook.site/templates\",\n  \"per_page\": 15,\n  \"prev_page_url\": null,\n  \"to\": 1,\n  \"total\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Template",
+          "id": "2f660abd-4ec8-4a0f-a0f2-02f244177fb5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My Updated Template\",\n  \"actions\": [\n    {\n      \"name\": null,\n      \"type\": \"store_global_variable\",\n      \"queue\": false,\n      \"delay\": 0,\n      \"condition\": null,\n      \"parameters\": {\n        \"name\": \"updated-variable\",\n        \"value\": \"$new-value$\"\n      },\n      \"order\": 1\n    }\n  ],\n  \"variables\": [\n    {\n      \"name\": \"updated_example\",\n      \"value\": \"updated value\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/templates/{{template_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "templates",
+                "{{template_id}}"
+              ]
+            },
+            "description": "Update an existing template's name, actions, or variables. Requires authentication."
+          },
+          "response": [
+            {
+              "id": "6fd35af4-0b55-48ea-bc3d-c69bf37251c6",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Updated Template\",\n  \"actions\": [\n    {\n      \"name\": null,\n      \"type\": \"store_global_variable\",\n      \"queue\": false,\n      \"delay\": 0,\n      \"condition\": null,\n      \"parameters\": {\n        \"name\": \"updated-variable\",\n        \"value\": \"$new-value$\"\n      },\n      \"order\": 1\n    }\n  ],\n  \"variables\": [\n    {\n      \"name\": \"updated_example\",\n      \"value\": \"updated value\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/templates/{{template_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "templates",
+                    "{{template_id}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"name\": \"My Updated Template\",\n  \"variables\": [\n    {\n      \"name\": \"updated_example\",\n      \"value\": \"updated value\"\n    }\n  ],\n  \"team_id\": 1,\n  \"updated_at\": \"2024-02-20T10:15:29.000000Z\",\n  \"created_at\": \"2024-02-20T10:01:29.000000Z\",\n  \"id\": 21,\n  \"actions\": [\n    {\n      \"condition\": null,\n      \"delay\": 0,\n      \"parameters\": {\n        \"name\": \"updated-variable\",\n        \"value\": \"$new-value$\"\n      },\n      \"token_id\": \"f1bd342e-c98b-4ac4-bf3f-c35f1f338161\",\n      \"type\": \"store_global_variable\",\n      \"order\": 1,\n      \"name\": null,\n      \"template_id\": 21,\n      \"uuid\": \"9b615454-3d5f-4cd6-bd4b-94b55e6f6f2f\",\n      \"updated_at\": \"2024-02-20T10:15:29.000000Z\",\n      \"created_at\": \"2024-02-20T10:15:29.000000Z\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Template",
+          "id": "bad413c7-65f9-4551-bbec-d0fcf7b02361",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/templates/{{template_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "templates",
+                "{{template_id}}"
+              ]
+            },
+            "description": "Delete a template permanently. Requires authentication."
+          },
+          "response": [
+            {
+              "id": "330666a3-08d6-4c7f-a31c-b074b190c05e",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/templates/{{template_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "templates",
+                    "{{template_id}}"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        }
+      ],
+      "id": "f5e180a0-b55f-4aae-90ee-86311c4f855a"
+    },
+    {
+      "name": "Databases",
+      "item": [
+        {
+          "name": "Run Query",
+          "id": "2cd88f71-9fd9-4844-a3bf-dd3694119e9d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"select * from users where email like concat('%', :domain)\",\n  \"params\": {\n    \"domain\": \"@example.com\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/databases/{{database_id}}/query",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "databases",
+                "{{database_id}}",
+                "query"
+              ]
+            },
+            "description": "Execute a SQL query on the specified database. Maximum 1000 results can be returned. Supports parameterized queries using named parameters (:param) or positional parameters (?)."
+          },
+          "response": [
+            {
+              "id": "f74ccc9e-b234-4538-8bb6-71d59df882b7",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"select * from users where email like concat('%', :domain)\",\n  \"params\": {\n    \"domain\": \"@example.com\"\n  }\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/databases/{{database_id}}/query",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "databases",
+                    "{{database_id}}",
+                    "query"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": [\n    {\n      \"id\": 1,\n      \"name\": \"Jack Daniels\",\n      \"email\": \"jack@example.com\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"Elijah Craig\",\n      \"email\": \"eli@example.com\"\n    }\n  ],\n  \"error\": null,\n  \"time\": 0\n}"
+            },
+            {
+              "id": "7d21324a-e220-4361-9dc2-979453103e73",
+              "name": "Error Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"select * from nonexisting_table\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/databases/{{database_id}}/query",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "databases",
+                    "{{database_id}}",
+                    "query"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": null,\n  \"error\": \"Undefined table: 7 ERROR: relation \\\"nonexisting_table\\\" does not exist\",\n  \"time\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "Run Query (params as array)",
+          "id": "0437d99d-35ed-425f-ad9b-c0a73de4cf4b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"select * from users where email = ?\",\n  \"params\": [\"jack@example.com\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/databases/{{database_id}}/query",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "databases",
+                "{{database_id}}",
+                "query"
+              ]
+            },
+            "description": "Execute a SQL query using positional parameters (array format)."
+          },
+          "response": []
+        },
+        {
+          "name": "Run Query (params as object)",
+          "id": "fe42a58c-9cda-463f-b887-714e99908242",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"select * from users\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/databases/{{database_id}}/query",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "databases",
+                "{{database_id}}",
+                "query"
+              ]
+            },
+            "description": "Execute a SQL query without parameters."
+          },
+          "response": []
+        },
+        {
+          "name": "Create Database",
+          "id": "247113d5-760f-400a-bea6-2dfa774a4613",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My Database\",\n  \"plan\": \"db-s\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/databases",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "databases"
+              ]
+            },
+            "description": "Create a new database. Requires authentication. Returns 401 Unauthorized if no databases purchased in subscription.\n\nPlan options:\n- db-s: Small database\n- db-m: Medium database\n- db-l: Large database"
+          },
+          "response": [
+            {
+              "id": "39d614cf-64e8-42cc-bbaf-9efcab87a2a6",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Database\",\n  \"plan\": \"db-s\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/databases",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "databases"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"23984\",\n  \"name\": \"My Database\",\n  \"plan\": \"db-s\",\n  \"group_id\": null,\n  \"max_bytes\": 104857600,\n  \"max_tables\": 1,\n  \"team_id\": 181,\n  \"updated_at\": \"2025-09-24T08:52:50.000000Z\",\n  \"created_at\": \"2025-09-24T08:52:50.000000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Database (with group)",
+          "id": "607aed85-e4fe-42d1-8094-10631f87514b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My Database\",\n  \"plan\": \"db-s\",\n  \"group_id\": \"12345\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/databases",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "databases"
+              ]
+            },
+            "description": "Create a new database and attach it to a group."
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Databases",
+          "id": "b5d4686d-2063-4903-8792-d11d711681d6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/database?page=1&per_page=15",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "database"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "15"
+                }
+              ]
+            },
+            "description": "Retrieve a paginated list of all databases."
+          },
+          "response": [
+            {
+              "id": "85785477-a25c-4372-9051-2e44602ae02e",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/database?page=1&per_page=15",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "database"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "15"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": \"23984\",\n      \"name\": \"My Database\",\n      \"plan\": \"db-s\",\n      \"team_id\": 345987,\n      \"group_id\": null,\n      \"max_bytes\": 104857600,\n      \"max_tables\": 1,\n      \"bytes_used\": 0,\n      \"tables_used\": 1,\n      \"created_at\": \"2025-09-23T10:26:51.000000Z\",\n      \"updated_at\": \"2025-09-23T10:26:55.000000Z\",\n      \"group\": null\n    }\n  ],\n  \"first_page_url\": \"https://webhook.test/databases?page=1\",\n  \"from\": 1,\n  \"last_page\": 1,\n  \"last_page_url\": \"https://webhook.test/databases?page=1\",\n  \"links\": [\n    {\n      \"url\": null,\n      \"label\": \"« Previous\",\n      \"active\": false\n    },\n    {\n      \"url\": \"https://webhook.test/databases?page=1\",\n      \"label\": \"1\",\n      \"active\": true\n    },\n    {\n      \"url\": null,\n      \"label\": \"Next »\",\n      \"active\": false\n    }\n  ],\n  \"next_page_url\": null,\n  \"path\": \"https://webhook.test/databases\",\n  \"per_page\": 15,\n  \"prev_page_url\": null,\n  \"to\": 1,\n  \"total\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Database",
+          "id": "4c418924-d1b4-403a-9ba8-5e721ce42bf9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My Updated Database\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/databases/{{database_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "databases",
+                "{{database_id}}"
+              ]
+            },
+            "description": "Update database properties such as name or group_id."
+          },
+          "response": [
+            {
+              "id": "77fa5187-9acb-4958-8abd-854d21d910ba",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Updated Database\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/databases/{{database_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "databases",
+                    "{{database_id}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"100014\",\n  \"name\": \"My Updated Database\",\n  \"plan\": \"db-s\",\n  \"team_id\": 181,\n  \"group_id\": null,\n  \"max_bytes\": 104857600,\n  \"max_tables\": 1,\n  \"bytes_used\": 0,\n  \"tables_used\": 0,\n  \"created_at\": \"2025-09-24T08:52:50.000000Z\",\n  \"updated_at\": \"2025-09-24T08:56:29.000000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Database",
+          "id": "847ebfb1-cbf2-41c6-aa4f-68bfa140f29e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/databases/{{database_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "databases",
+                "{{database_id}}"
+              ]
+            },
+            "description": "Delete a database permanently."
+          },
+          "response": [
+            {
+              "id": "b845fe7e-130f-491e-b8af-c183c8d76cec",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/database/{{database_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "database",
+                    "{{database_id}}"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        }
+      ],
+      "id": "19d66f5e-310a-4ec6-bf8e-f4a3c86fddf6"
+    },
+    {
+      "name": "Global Variables",
+      "item": [
+        {
+          "name": "Create Global Variable",
+          "id": "4dd9002d-d330-42a2-bc49-8e2dd5f6145b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"content_type\",\n  \"value\": \"application/json\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/global-variables",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "global-variables"
+              ]
+            },
+            "description": "Create a new global variable. After creating, the variable will be available in Custom Actions using the format $variable_name$. Requires authentication."
+          },
+          "response": [
+            {
+              "id": "7692e7a3-2954-4742-833a-76a359c0c3c6",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"content_type\",\n  \"value\": \"application/json\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/global-variables",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "global-variables"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": 598297,\n  \"name\": \"content_type\",\n  \"team_id\": 1,\n  \"value\": \"application/json\",\n  \"updated_at\": \"2024-04-15T11:20:02.000000Z\",\n  \"created_at\": \"2024-04-15T11:20:02.000000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Global Variables",
+          "id": "8270de70-b729-4d88-b7f1-5b837831e646",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/global-variables?page=1&per_page=50",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "global-variables"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number to retrieve (default 1)"
+                },
+                {
+                  "key": "per_page",
+                  "value": "50",
+                  "description": "Amount of variables returned, defaults to 50 (max 100)"
+                },
+                {
+                  "key": "search",
+                  "value": "",
+                  "description": "Filter variables by name",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retrieve a paginated list of all global variables. Supports filtering by name using the search parameter. Requires authentication."
+          },
+          "response": [
+            {
+              "id": "be9dd9a0-c6c6-429c-97d6-9617946c2c32",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/global-variables?page=1&per_page=15",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "global-variables"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "15"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 598297,\n      \"user_id\": 0,\n      \"team_id\": 1,\n      \"name\": \"content_type\",\n      \"value\": \"application/json\",\n      \"created_at\": \"2024-04-15T11:20:02.000000Z\",\n      \"updated_at\": \"2024-04-15T11:20:02.000000Z\"\n    },\n    {\n      \"id\": 598294,\n      \"user_id\": 0,\n      \"team_id\": 1,\n      \"name\": \"test\",\n      \"value\": \"🥲\",\n      \"created_at\": \"2024-04-14T13:21:24.000000Z\",\n      \"updated_at\": \"2024-04-14T13:21:24.000000Z\"\n    }\n  ],\n  \"first_page_url\": \"https://webhook.test/global-variables?page=1\",\n  \"from\": 1,\n  \"last_page\": 21992,\n  \"last_page_url\": \"https://webhook.test/global-variables?page=21992\",\n  \"links\": [\n    {\n      \"url\": null,\n      \"label\": \"« Previous\",\n      \"active\": false\n    },\n    {\n      \"url\": \"https://webhook.test/global-variables?page=1\",\n      \"label\": \"1\",\n      \"active\": true\n    },\n    {\n      \"url\": null,\n      \"label\": \"...\",\n      \"active\": false\n    },\n    {\n      \"url\": \"https://webhook.test/global-variables?page=21991\",\n      \"label\": \"21991\",\n      \"active\": false\n    },\n    {\n      \"url\": \"https://webhook.test/global-variables?page=2\",\n      \"label\": \"Next »\",\n      \"active\": false\n    }\n  ],\n  \"next_page_url\": \"https://webhook.test/global-variables?page=2\",\n  \"path\": \"https://webhook.test/global-variables\",\n  \"per_page\": 15,\n  \"prev_page_url\": null,\n  \"to\": 15,\n  \"total\": 329870\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Global Variables (with search)",
+          "id": "e9ea38f9-a978-4dbc-b26b-39dcb67f28cf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/global-variables?page=1&per_page=50&search=content",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "global-variables"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "50"
+                },
+                {
+                  "key": "search",
+                  "value": "content",
+                  "description": "Filter variables by name"
+                }
+              ]
+            },
+            "description": "Example of filtering global variables by name using the search parameter."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Global Variable",
+          "id": "13bd1543-9856-4fea-9e0c-403408d61ea6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"content_type\",\n  \"value\": \"application/xml\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/global-variables/{{global_variable_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "global-variables",
+                "{{global_variable_id}}"
+              ]
+            },
+            "description": "Update an existing global variable's name or value. Requires authentication."
+          },
+          "response": [
+            {
+              "id": "0f92f14c-bba8-4003-8aa5-6318e77015f3",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"content_type\",\n  \"value\": \"application/xml\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/global-variables/{{global_variable_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "global-variables",
+                    "{{global_variable_id}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": 598297,\n  \"name\": \"content_type\",\n  \"team_id\": 1,\n  \"value\": \"application/xml\",\n  \"updated_at\": \"2024-04-15T11:25:02.000000Z\",\n  \"created_at\": \"2024-04-15T11:20:02.000000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Global Variable",
+          "id": "3c1bdeef-6c0b-498a-8e71-930f8d5c904b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "inherit"
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/global-variables/{{global_variable_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "global-variables",
+                "{{global_variable_id}}"
+              ]
+            },
+            "description": "Delete a global variable permanently. Requires authentication."
+          },
+          "response": [
+            {
+              "id": "6cff8c3a-fb59-4bb0-9af1-443cf0008419",
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/global-variables/{{global_variable_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "global-variables",
+                    "{{global_variable_id}}"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        }
+      ],
+      "id": "8d6f1fb7-104d-4518-a1cb-e747296e4c09"
+    },
+    {
+      "name": "Schedules",
+      "item": [
+        {
+          "name": "Create Schedule",
+          "id": "3e1a98be-26a6-4007-943d-d23bc8d7576b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{apiKey}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My schedule\",\n  \"interval\": \"5-minute\",\n  \"request_url\": \"https://example.com\",\n  \"request_method\": \"POST\",\n  \"request_body\": \"{\\\"json\\\": \\\"message\\\"}\",\n  \"request_headers\": \"Authorization: Bearer mytoken\\nContent-Type: application/json\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/schedules",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules"
+              ]
+            },
+            "description": "Creates a new schedule. Variables will be replaced in the fields request_url, request_method, request_headers and request_body."
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Schedules",
+          "id": "8bf0b00a-6b41-4c61-8fd2-7b4744870c17",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{apiKey}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/schedules?page=1&per_page=15",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number"
+                },
+                {
+                  "key": "per_page",
+                  "value": "15",
+                  "description": "Number of results per page"
+                }
+              ]
+            },
+            "description": "Retrieves a paginated list of all schedules. Rate limit: 60 requests per minute."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single Schedule",
+          "id": "c586989d-a8bb-4370-8272-1c67bb708ab2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{apiKey}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/schedules/{{scheduleId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules",
+                "{{scheduleId}}"
+              ]
+            },
+            "description": "Retrieves a single schedule by ID. Rate limit: 60 requests per minute."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Schedule",
+          "id": "19259232-059d-4437-859c-9c2a33a3672e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{apiKey}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated schedule\",\n  \"interval\": \"10-minute\",\n  \"request_url\": \"https://example.com\",\n  \"request_method\": \"POST\",\n  \"request_body\": \"{\\\"json\\\": \\\"updated message\\\"}\",\n  \"request_headers\": \"Authorization: Bearer mytoken\\nContent-Type: application/json\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/schedules/{{scheduleId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules",
+                "{{scheduleId}}"
+              ]
+            },
+            "description": "Updates an existing schedule. Use the same request body format as Create Schedule."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Schedule",
+          "id": "0e8f743e-76dc-4fc6-9ec7-7e4ca0adc619",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{apiKey}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/schedules/{{scheduleId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules",
+                "{{scheduleId}}"
+              ]
+            },
+            "description": "Deletes a schedule. Returns 204 No Content on success."
+          },
+          "response": []
+        },
+        {
+          "name": "Run Schedule Now",
+          "id": "a9b4ce3d-20ac-4501-a9fe-f08693c51c10",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{apiKey}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/schedules/{{scheduleId}}/run-now",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules",
+                "{{scheduleId}}",
+                "run-now"
+              ]
+            },
+            "description": "Manually triggers a schedule to run immediately."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Schedule Logs",
+          "id": "0c7d19c3-1f41-4b96-a8d8-1f4b0ff95c69",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{apiKey}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/schedules/{{scheduleId}}/logs?sorting=newest",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules",
+                "{{scheduleId}}",
+                "logs"
+              ],
+              "query": [
+                {
+                  "key": "sorting",
+                  "value": "newest",
+                  "description": "Sort order: newest or oldest (default)"
+                }
+              ]
+            },
+            "description": "Retrieves execution logs for a specific schedule. Rate limit: 60 requests per minute."
+          },
+          "response": []
+        }
+      ],
+      "id": "e989b060-dbf6-43e7-908d-aae4e97131f4"
+    },
+    {
+      "name": "User Management",
+      "item": [
+        {
+          "name": "Users",
+          "item": [
+            {
+              "name": "Invite User",
+              "id": "0f06ab32-95d7-4ae1-a80e-443ae9f27ad4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Elijah Craig\",\n  \"email\": \"ej@example.com\",\n  \"user_type_id\": 300,\n  \"role_id\": 20001\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/users/invite",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "users",
+                    "invite"
+                  ]
+                },
+                "description": "Sends a user invite to the specified email address\n\nIf part of a SSO-enabled Webhook.site Team, the user is sent a login URL where they can log in immediately. Otherwise, they are sent a link to a page where they can set up their profile and password.\n\n- `name` (string) The name of the user.\n    \n- `email` (string) The user's email, and where the invite is sent.\n    \n- `user_type_id` (int) One of: 100 (Administrator), 200 (Member), 300 (Viewer)"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Current User",
+              "id": "230afc14-a0c3-4fa7-8831-2a84105e08de",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/user",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "user"
+                  ]
+                },
+                "description": "Retrieves information about the currently authenticated user."
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Users",
+              "id": "c2a4905d-6fd4-401f-a4fc-f72febe7a888",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/users",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                },
+                "description": "Retrieves the profile information of the authenticated user."
+              },
+              "response": []
+            },
+            {
+              "name": "Update User Profile",
+              "id": "0251715a-87cc-42df-98db-13710d2c5226",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Elijah Craig\",\n  \"email\": \"ej@example.com\",\n  \"user_type_id\": 300,\n  \"role_id\": 20001\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/users/{{user_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "users",
+                    "{{user_id}}"
+                  ]
+                },
+                "description": "Updates the profile information of the authenticated user."
+              },
+              "response": []
+            },
+            {
+              "name": "Delete User",
+              "id": "dda0ea3d-8b6d-4be1-a177-76a015663d29",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Elijah Craig\",\n  \"email\": \"ej@example.com\",\n  \"user_type_id\": 300,\n  \"role_id\": 20001\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/users/{{user_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "users",
+                    "{{user_id}}"
+                  ]
+                },
+                "description": "Deletes the user with the specified ID"
+              },
+              "response": []
+            }
+          ],
+          "id": "40777c56-2a90-4fbd-84c8-c0403c836138",
+          "description": "Users API endpoints for managing user accounts and profiles."
+        },
+        {
+          "name": "Groups",
+          "item": [
+            {
+              "name": "Create Group",
+              "id": "f01f0c34-9e8f-4f42-82b4-8eee0a711cff",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Group\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/groups",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ]
+                },
+                "description": "Creates a new group to organize your tokens. Each group is a container for multiple tokens."
+              },
+              "response": [
+                {
+                  "id": "e8a6e6bc-3c02-4043-8195-c54ec9264d90",
+                  "name": "Success Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"My Group\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{base_url}}/groups",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "groups"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": 3498,\n  \"team_id\": 12098,\n  \"name\": \"My Group\",\n  \"updated_at\": \"2023-04-26 18:43:46\",\n  \"created_at\": \"2023-04-26 18:43:46\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Get All Groups",
+              "id": "e310ce4c-b1e4-448a-a363-45d203fd8001",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/groups?page=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "description": "Page number for pagination"
+                    }
+                  ]
+                },
+                "description": "Retrieves a paginated list of all groups associated with your account."
+              },
+              "response": [
+                {
+                  "id": "12e801a8-476e-47c8-b831-08a3c59c4653",
+                  "name": "Success Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{base_url}}/groups?page=1",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "groups"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"current_page\": 1,\n  \"data\": [\n    {\n      \"id\": 3498,\n      \"team_id\": 12098,\n      \"name\": \"My Group\",\n      \"created_at\": \"2022-10-26 14:25:11\",\n      \"updated_at\": \"2022-10-26 14:25:11\"\n    },\n    {\n      \"id\": 3499,\n      \"team_id\": 12098,\n      \"name\": \"My nice group\",\n      \"created_at\": \"2023-04-26 09:57:40\",\n      \"updated_at\": \"2023-04-26 09:57:40\"\n    }\n  ],\n  \"first_page_url\": \"https://webhook.site/groups?page=1\",\n  \"from\": 1,\n  \"last_page\": 1,\n  \"last_page_url\": \"https://webhook.site/groups?page=1\",\n  \"next_page_url\": null,\n  \"path\": \"https://webhook.site/groups\",\n  \"per_page\": \"2\",\n  \"prev_page_url\": null,\n  \"to\": 2,\n  \"total\": 2\n}"
+                }
+              ]
+            },
+            {
+              "name": "Get Group by ID",
+              "id": "35e484f0-1da8-466a-8bfa-e40007599770",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/groups/{{group_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "groups",
+                    "{{group_id}}"
+                  ]
+                },
+                "description": "Retrieves details of a specific group by its ID."
+              },
+              "response": []
+            },
+            {
+              "name": "Update Group",
+              "id": "900e2102-2de2-4f01-94f2-b4079ff3c3e4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Group Name\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/groups/{{group_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "groups",
+                    "{{group_id}}"
+                  ]
+                },
+                "description": "Updates a group's information."
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Group",
+              "id": "620fb4bf-50a3-4d97-98f1-89f21396ddd7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/groups/{{group_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "groups",
+                    "{{group_id}}"
+                  ]
+                },
+                "description": "Deletes a group."
+              },
+              "response": []
+            }
+          ],
+          "id": "ac430dc6-fa8c-4e0d-a50d-5b5e5f49019c",
+          "description": "Webhook.site Groups API allows you to organize your tokens. Each group is a container for multiple tokens."
+        }
+      ],
+      "id": "f0880270-dba4-44be-b253-9dba62ce1c65"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{api_key}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "bfd6b019-293e-4b58-8f6b-24e1edc92131",
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          "// Auto-generate timestamp for requests",
+          "pm.globals.set('timestamp', new Date().toISOString());",
+          "",
+          "// Check if API key is set",
+          "if (!pm.collectionVariables.get('api_key') || pm.collectionVariables.get('api_key') === 'your-api-key-here') {",
+          "    console.log('⚠️ Please set your API key in the collection variables');",
+          "}",
+          "",
+          "// Check if token_id is set for requests that need it",
+          "const url = pm.request.url.toString();",
+          "if (url.includes('{{token_id}}') && (!pm.collectionVariables.get('token_id') || pm.collectionVariables.get('token_id') === 'your-token-id-here')) {",
+          "    console.log('⚠️ Please set your token_id in the collection variables');",
+          "}"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "a113dcdd-5fed-4098-a82f-e86b76266ad7",
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          "// Common test scripts",
+          "pm.test('Status code is successful', function () {",
+          "    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202, 204]);",
+          "});",
+          "",
+          "// Auto-extract token_id from create token response",
+          "if (pm.info.requestName === 'Create Token' && pm.response.code === 200) {",
+          "    const responseJson = pm.response.json();",
+          "    if (responseJson.uuid) {",
+          "        pm.collectionVariables.set('token_id', responseJson.uuid);",
+          "        pm.collectionVariables.set('webhook_url', 'https://webhook.site/' + responseJson.uuid);",
+          "        console.log('✅ Token ID automatically set: ' + responseJson.uuid);",
+          "    }",
+          "}",
+          "",
+          "// Auto-extract request_id from request responses",
+          "if (pm.info.requestName === 'Get All Requests' && pm.response.json && pm.response.json().data && Array.isArray(pm.response.json().data) && pm.response.json().data.length > 0) {",
+          "    const firstRequest = pm.response.json().data[0];",
+          "    if (firstRequest.uuid) {",
+          "        pm.collectionVariables.set('request_id', firstRequest.uuid);",
+          "        console.log('✅ Request ID automatically set: ' + firstRequest.uuid);",
+          "    }",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://webhook.site"
+    },
+    {
+      "key": "api_key",
+      "value": "your-api-key-here"
+    },
+    {
+      "key": "token_id",
+      "value": "your-token-id-here"
+    },
+    {
+      "key": "request_id",
+      "value": "request-uuid-here"
+    }
+  ]
+}
