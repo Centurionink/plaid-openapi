@@ -1,0 +1,38 @@
+{
+  "workspace": {
+    "id": "45280b07-0f6d-4c2b-80af-729382b0e0aa"
+  },
+  "entities": {
+    "collections": [
+      "../postman/collections/API Prototyping_19780953-0db88791-cb56-4c48-b2d3-c1ebb540826b.postman_collection.json",
+      "../postman/collections/PayPal Public APIs 04-22-2022_19780953-0e2e6667-d5dc-42b0-b0eb-73e0db4ced9d.postman_collection.json",
+      "../postman/collections/Authorization methods_19780953-218d0830-0a49-4fc9-9621-8be305de74ce.postman_collection.json",
+      "../postman/collections/Plaid API Endpoints_19780953-21927914-1da5-42fb-8906-af79cfa86458.postman_collection.json",
+      "../postman/collections/Code Signing API_19780953-36ff3317-1ec0-4de9-aaf2-6910dd8bb9e2.postman_collection.json",
+      "../postman/collections/PayPal APIs_19780953-64b7c957-60ff-49b1-b0a5-7a9ec9d58aa5.postman_collection.json",
+      "../postman/collections/PayPal APIs_19780953-7e10013e-a2ca-4cb5-8afc-0fb6c294f68f.postman_collection.json",
+      "../postman/collections/Plaid API Endpoints_19780953-7fbca4e4-9a43-4a4c-b186-c96552465c33.postman_collection.json",
+      "../postman/collections/Webhook.site API_19780953-821f02b1-8820-4505-97f7-c5112c4bc539.postman_collection.json",
+      "../postman/collections/PayPal APIs_19780953-8411c9f2-e743-4b0b-8d4b-d0c9b3a9d5b6.postman_collection.json",
+      "../postman/collections/CRM - Engagements, Notes API Collection_19780953-99b3a684-6985-4392-a841-d87053f2afed.postman_collection.json",
+      "../postman/collections/CRM API Collections_19780953-a4b394e1-57fc-42e6-9da3-ae77d1b7a5d8.postman_collection.json",
+      "../postman/collections/Webhook.site API_19780953-c66f852e-e7b5-43f9-b9f5-c6051075df71.postman_collection.json",
+      "../postman/collections/Pipedrive API v1_19780953-e8734fa3-1a91-4f30-bd0c-0a564cbfca9e.postman_collection.json",
+      "../postman/collections/PayPal Public APIs 04-22-2022_19780953-eb9f5139-825c-4347-9bd1-b6520fad471a.postman_collection.json",
+      "../postman/collections/New Collection_19780953-f6ee3b43-46b5-47e3-8fbe-2af37cbfe2d1.postman_collection.json"
+    ],
+    "environments": [
+      "../postman/environments/New Environment_19780953-6b3ea187-4fc3-4428-baac-4ac781722bd5.postman_environment.json",
+      "../postman/environments/PayPal Override Env_19780953-1376991c-4943-4b3e-814d-46806dcb3495.postman_environment.json",
+      "../postman/environments/PayPal Override Env_19780953-4bed9217-45e0-44bf-9512-4d5bbbd0b191.postman_environment.json",
+      "../postman/environments/New Environment_19780953-664a6156-48bb-46a6-928a-81bc4a315a17.postman_environment.json",
+      "../postman/environments/PayPal Override Env_19780953-93b5052b-208e-4949-9bce-b3ef0de38ea0.postman_environment.json",
+      "../postman/environments/PayPal Override Env_19780953-eb5dc1ad-e317-40e8-9b97-08a1d74dc3fb.postman_environment.json",
+      "../postman/environments/New Environment_19780953-3681b4cb-b057-4ae3-88bc-5bd104f7bee6.postman_environment.json",
+      "../postman/environments/PayPal Override Env_19780953-8359189b-ac45-4fc1-b792-a9178914061d.postman_environment.json"
+    ],
+    "specs": [],
+    "flows": [],
+    "globals": []
+  }
+}
